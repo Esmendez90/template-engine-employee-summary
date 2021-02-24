@@ -26,9 +26,18 @@ const confirmTeam = [
 const teamMember = [
   {
     type: "list",
-    message: "What team member do you want to add",
+    message: "What team member do you want to add?",
     choices: ["Manager", "Engineer", "Intern"],
     name: "member",
+  },
+];
+
+const addMember = [
+  {
+    type: "list",
+    message: "What team member do you want to add?",
+    choices: ["Engineer", "Intern", "I'm done adding members"],
+    name: "add_member",
   },
 ];
 
@@ -53,10 +62,58 @@ const managerQuestions = [
     type: "input",
     message: "Enter your office number",
     name: "manager_officeNumber",
-  }
-]
+  },
+];
 
-// Confirm if you're building a team member
+// Create questions to build an Engineer
+const engineerQuestions = [
+  {
+    type: "input",
+    message: "Enter your name",
+    name: "engineer_name",
+  },
+  {
+    type: "input",
+    message: "Enter your ID number",
+    name: "engineer_id",
+  },
+  {
+    type: "input",
+    message: "Enter your email address",
+    name: "engineer_email",
+  },
+  {
+    type: "input",
+    message: "Enter your github username",
+    name: "engineer_github",
+  },
+];
+
+// Create questions to build an Intern
+const internQuestions = [
+  {
+    type: "input",
+    message: "Enter your name",
+    name: "intern_name",
+  },
+  {
+    type: "input",
+    message: "Enter your ID number",
+    name: "intern_id",
+  },
+  {
+    type: "input",
+    message: "Enter your email address",
+    name: "intern_email",
+  },
+  {
+    type: "input",
+    message: "Enter your school name",
+    name: "intern_school",
+  },
+];
+
+// Confirm if you're building a team
 inquirer.prompt(confirmTeam).then((answer) => {
   answer.confirm_team
     ? buildMember()
@@ -66,26 +123,85 @@ inquirer.prompt(confirmTeam).then((answer) => {
 // Choose what team member you're building
 const buildMember = () => {
   inquirer.prompt(teamMember).then((answer) => {
-    console.log(answer);
+    //console.log(answer);
     if (answer.member === "Manager") {
-      console.log("build Manager");
+      //console.log("build Manager");
       buildManager();
     } else if (answer.member === "Engineer") {
-      console.log("build Engineer");
+      //console.log("build Engineer");
+      buildEngineer();
     } else if (answer.member === "Intern") {
-      console.log("build intern");
+      //console.log("build intern");
+      buildIntern();
     }
   });
 };
 
 const buildManager = () => {
   inquirer.prompt(managerQuestions).then((answer) => {
-    console.log(answer);
-    arrOfMember.push(new Manager(answer.manager_name, answer.manager_id, answer.manager_email, answer.manager_officeNumber));
+    //console.log(answer);
+    arrOfMember.push(
+      new Manager(
+        answer.manager_name,
+        answer.manager_id,
+        answer.manager_email,
+        answer.manager_officeNumber
+      )
+    );
+    // Log the information of the new Manager created
     console.log(arrOfMember);
+    addTeamMember();
+  });
+};
 
-  })
-}
+const buildEngineer = () => {
+  inquirer.prompt(engineerQuestions).then((answer) => {
+    //console.log(answer);
+    arrOfMember.push(
+      new Engineer(
+        answer.engineer_name,
+        answer.engineer_id,
+        answer.engineer_email,
+        answer.engineer_github
+      )
+    );
+    // Log the information of the new Engineer created
+    console.log(arrOfMember);
+    addTeamMember();
+  });
+};
+
+const buildIntern = () => {
+  inquirer.prompt(internQuestions).then((answer) => {
+    //console.log(answer);
+    arrOfMember.push(
+      new Intern(
+        answer.intern_name,
+        answer.intern_id,
+        answer.intern_email,
+        answer.intern_school
+      )
+    );
+    // Log the information of the new Intern created
+    console.log(arrOfMember);
+    addTeamMember();
+  });
+};
+
+const addTeamMember = () => {
+  inquirer.prompt(addMember).then((answer) => {
+    switch (answer.add_member) {
+      case "Engineer":
+        buildEngineer();
+        break;
+      case "Intern":
+        buildIntern();
+        break;
+      default:
+        console.log("some code here");
+    }
+  });
+};
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
