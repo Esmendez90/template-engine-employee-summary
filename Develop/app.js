@@ -13,8 +13,8 @@ const render = require("./lib/htmlRenderer");
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
-let arrOfMember = [];
-// Confirm if you're building a team member question
+let memberArr = [];
+// Confirm if you're building a team member
 const confirmTeam = [
   {
     type: "confirm",
@@ -22,7 +22,7 @@ const confirmTeam = [
     name: "confirm_team",
   },
 ];
-// Choose what team member the user is building question
+// Choose what team member the user is building
 const teamMember = [
   {
     type: "list",
@@ -32,6 +32,7 @@ const teamMember = [
   },
 ];
 
+// Add additional team members or finish adding members
 const addMember = [
   {
     type: "list",
@@ -137,10 +138,12 @@ const buildMember = () => {
   });
 };
 
+// Answer prompts to create a Manager
 const buildManager = () => {
   inquirer.prompt(managerQuestions).then((answer) => {
     //console.log(answer);
-    arrOfMember.push(
+    // Answers for Manager are pushed into the memberArr creating a new Manager
+    memberArr.push(
       new Manager(
         answer.manager_name,
         answer.manager_id,
@@ -148,16 +151,18 @@ const buildManager = () => {
         answer.manager_officeNumber
       )
     );
-    // Log the information of the new Manager created
-    console.log(arrOfMember);
+    // Log the information of the new Manager
+    console.log(memberArr);
     addTeamMember();
   });
 };
 
+// Answer prompts to create an Engineer
 const buildEngineer = () => {
   inquirer.prompt(engineerQuestions).then((answer) => {
     //console.log(answer);
-    arrOfMember.push(
+    // Answers for engineer are pushed into the memberArr creating a new Engineer
+    memberArr.push(
       new Engineer(
         answer.engineer_name,
         answer.engineer_id,
@@ -165,16 +170,18 @@ const buildEngineer = () => {
         answer.engineer_github
       )
     );
-    // Log the information of the new Engineer created
-    console.log(arrOfMember);
+    // Log the information of the new Engineer
+    console.log(memberArr);
     addTeamMember();
   });
 };
 
+// Answer prompts to create an Intern
 const buildIntern = () => {
   inquirer.prompt(internQuestions).then((answer) => {
     //console.log(answer);
-    arrOfMember.push(
+    // Answers for intern are pushed into the memberArr creating a new Intern
+    memberArr.push(
       new Intern(
         answer.intern_name,
         answer.intern_id,
@@ -182,23 +189,27 @@ const buildIntern = () => {
         answer.intern_school
       )
     );
-    // Log the information of the new Intern created
-    console.log(arrOfMember);
+    // Log the information of the new Intern
+    console.log(memberArr);
     addTeamMember();
   });
 };
 
+// If the user wants to create additional members...
 const addTeamMember = () => {
   inquirer.prompt(addMember).then((answer) => {
     switch (answer.add_member) {
+      // If the user chooses Engineer then the function to build an Engineer will run
       case "Engineer":
         buildEngineer();
         break;
+        // If the user chooses Intern then the function to build an Intern will run
       case "Intern":
         buildIntern();
         break;
+        // Otherwise, the data should be displayed in an HTML file
       default:
-        console.log("some code here");
+        console.log("Display data");
     }
   });
 };
