@@ -10,25 +10,82 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
-const questions = [
-    {
-      type: "input",
-      message: "What is your GitHub username?",
-      name: "username",
-    },
-]
-function init() {
-    inquirer.prompt(questions).then(answers => {
-      console.log(answers);
-    });
-  }
+let arrOfMember = [];
+// Confirm if you're building a team member question
+const confirmTeam = [
+  {
+    type: "confirm",
+    message: "Do you want to build an engineering team?",
+    name: "confirm_team",
+  },
+];
+// Choose what team member the user is building question
+const teamMember = [
+  {
+    type: "list",
+    message: "What team member do you want to add",
+    choices: ["Manager", "Engineer", "Intern"],
+    name: "member",
+  },
+];
 
-  init();
-  
+// Create questions to build a Manager
+const managerQuestions = [
+  {
+    type: "input",
+    message: "Enter your name",
+    name: "manager_name",
+  },
+  {
+    type: "input",
+    message: "Enter your ID number",
+    name: "manager_id",
+  },
+  {
+    type: "input",
+    message: "Enter your email address",
+    name: "manager_email",
+  },
+  {
+    type: "input",
+    message: "Enter your office number",
+    name: "manager_officeNumber",
+  }
+]
+
+// Confirm if you're building a team member
+inquirer.prompt(confirmTeam).then((answer) => {
+  answer.confirm_team
+    ? buildMember()
+    : console.log("You're not building a team. Bye bye!");
+});
+
+// Choose what team member you're building
+const buildMember = () => {
+  inquirer.prompt(teamMember).then((answer) => {
+    console.log(answer);
+    if (answer.member === "Manager") {
+      console.log("build Manager");
+      buildManager();
+    } else if (answer.member === "Engineer") {
+      console.log("build Engineer");
+    } else if (answer.member === "Intern") {
+      console.log("build intern");
+    }
+  });
+};
+
+const buildManager = () => {
+  inquirer.prompt(managerQuestions).then((answer) => {
+    console.log(answer);
+    arrOfMember.push(new Manager(answer.manager_name, answer.manager_id, answer.manager_email, answer.manager_officeNumber));
+    console.log(arrOfMember);
+
+  })
+}
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
