@@ -5,7 +5,7 @@ class Manager extends Employee {
   constructor(name, id, email) {
     super(name, id, email);
     // Additional Properties
-    this.officeNumber = officeNumber;
+    this.officeNumber = 100;
   }
   
   // Methods

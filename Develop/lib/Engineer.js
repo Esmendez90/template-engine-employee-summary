@@ -5,7 +5,7 @@ class Engineer extends Employee {
   constructor(name, id, email) {
     super(name, id, email);
     // Additional Properties
-    this.github = github;
+    this.github = "GitHubUser";
   }
 
   // Methods

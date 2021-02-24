@@ -5,7 +5,7 @@ class Intern extends Employee {
   constructor(name, id, email) {
     super(name, id, email);
     // Additional Properties
-    this.school = school;
+    this.school = "UCLA";
   }
 
   // Methods
