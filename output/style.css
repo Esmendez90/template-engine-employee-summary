@@ -1,3 +1,36 @@
 body {
-    background-color: aqua;
+    background-color: rgb(52, 105, 170);
 }
+
+.backgroundImg {
+    background-image: url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80");
+    background-position: center;
+    background-size: cover;
+}
+
+.text-center {
+    color: white;
+    text-shadow: 4px 2px black;
+}
+
+.row {
+    justify-content: center;
+}
+
+.card {
+    margin: 15px auto;
+}
+
+.card-header {
+    background-color: rgb(233, 202, 27);
+}
+
+.card-body {
+    background-color: rgb(219, 73, 73);
+}
+
+.list-group-item {
+    background-color:#ecd7bc;
+}
+
+
