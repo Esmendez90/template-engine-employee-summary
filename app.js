@@ -12,6 +12,9 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+// HINT: each employee type (manager, engineer, or intern) has slightly different
+// information; write your code to ask different questions via inquirer depending on
+// employee type.
 
 let memberArr = [];
 // Confirm if you're building a team member
@@ -203,13 +206,14 @@ const addTeamMember = () => {
       case "Engineer":
         buildEngineer();
         break;
-        // If the user chooses Intern then the function to build an Intern will run
+      // If the user chooses Intern then the function to build an Intern will run
       case "Intern":
         buildIntern();
         break;
-        // Otherwise, the data should be displayed in an HTML file
+      // Otherwise, the data should be displayed in an HTML file
       default:
-        console.log("Display data");
+        //console.log("Display data");
+        writeHTML();
     }
   });
 };
@@ -224,9 +228,14 @@ const addTeamMember = () => {
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
 
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
+const writeHTML = () => {
+  //console.log(render(memberArr));
+  fs.writeFile(outputPath, render(memberArr), (err) =>
+    err ? console.error("Error") : console.log("Success!")
+  );
+};
+
+// ===================================================================================
 
 // HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
 // and Intern classes should all extend from a class named Employee; see the directions
