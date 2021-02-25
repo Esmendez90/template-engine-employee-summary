@@ -17,7 +17,7 @@ const render = require("./lib/htmlRenderer");
 // employee type.
 
 let memberArr = [];
-// Confirm if you're building a team member
+// Confirm if you're building an engineering team
 const confirmTeam = [
   {
     type: "confirm",
