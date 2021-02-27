@@ -34,7 +34,7 @@ Build a software engineering team generator command line application. The applic
 
 <https://esmendez90.github.io/template-engine-employee-summary/>
 
-## Link to Application functionality
+## Link to Application Functionality
 
 <https://youtu.be/YvhFAQ1YJ_c>
 
