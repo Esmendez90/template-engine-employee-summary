@@ -9,7 +9,6 @@ As a web developer, I want to be able to build a Node CLI that takes in informat
 * [Description](#description)
 * [Requirements](#requirements)
 * [Screenshots](#screenshots)
-* [Link to Page](#link-to-page)
 * [Link to Application functionality](#link-to-application-functionality)
 * [Tools](#tools)
 
@@ -29,10 +28,6 @@ Build a software engineering team generator command line application. The applic
 
 <img src="images/template-1.png" alt="Engine Employee Summary" width="80%" height="75%">
 <img src="images/template-2.png" alt="Engine Employee Summary" width="80%" height="75%">
-
-## Link to Page
-
-<https://esmendez90.github.io/template-engine-employee-summary/>
 
 ## Link to Application Functionality
 
