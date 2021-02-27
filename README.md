@@ -10,6 +10,7 @@ As a web developer, I want to be able to build a Node CLI that takes in informat
 * [Requirements](#requirements)
 * [Screenshots](#screenshots)
 * [Link to Page](#link-to-page)
+* [Link to Application functionality](#link-to-application-functionality)
 * [Tools](#tools)
 
 ## Description
@@ -32,6 +33,10 @@ Build a software engineering team generator command line application. The applic
 ## Link to Page
 
 <https://esmendez90.github.io/template-engine-employee-summary/>
+
+## Link to Application functionality
+
+<https://youtu.be/YvhFAQ1YJ_c>
 
 ## Tools
 
